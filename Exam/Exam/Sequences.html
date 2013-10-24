@@ -1,0 +1,35 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+</head>
+<script>
+    function Solve(args) {
+        //var args = ["9", "1", "8", "8", "7", "6", "5", "7", "7", "6"];
+
+        var elements = parseInt(args[0]);
+        var array = [];
+        for (var count = 0; count < elements; count++) {
+            var currentElement = parseInt(args[count + 1]);
+            array.push(currentElement);
+        }
+
+        var sequenses = 0;
+        var current = array[0];
+        for (var count = 1; count < elements; count++) {
+            var next = array[count];
+            if (next < current) {
+                sequenses++;
+            }
+            current = next;
+        }
+
+        sequenses++;
+
+        //console.log(sequenses);
+        return sequenses;
+    }
+</script>
+<body onload="Solve()">
+</body>
+</html>

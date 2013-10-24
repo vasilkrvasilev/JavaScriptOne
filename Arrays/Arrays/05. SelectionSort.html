@@ -1,0 +1,50 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>SelectionSort</title>
+	<link href="styles/js-console.css" rel="stylesheet" />
+</head>
+<body>
+    <label for="tb-numbers">Sequence: </label>
+    <input type="text" id="tb-numbers" />
+	<a href="#" id="botton" onclick="onBottonClick()">Click</a>
+	<div id="js-console">
+	</div>
+	<script src="scripts/js-console.js">	  
+	</script>
+    <script>
+
+        function onBottonClick() {
+
+            var input = jsConsole.read("#tb-numbers");
+            var array = input.split(" ");
+
+            var maxEnd = 0;
+            var maxLength = 0;
+            var sequence = 1;
+
+            var minNumber = Number.MAX_VALUE;
+            var currentPosition = 0;
+            for (var iteration = 1; iteration < array.length; iteration++) {
+                for (var position = iteration - 1; position < array.length; position++) {
+                    if (parseInt(array[position]) < minNumber) {
+                        minNumber = parseInt(array[position]);
+                        currentPosition = position;
+                    }
+                }
+                var exchangeNumber = array[iteration - 1];
+                array[iteration - 1] = array[currentPosition];
+                array[currentPosition] = exchangeNumber;
+                minNumber = Number.MAX_VALUE;
+                currentPosition = 0;
+            }
+
+            jsConsole.writeLine("The sorted array is:");
+            for (var count = 0; count < array.length; count++) {
+                jsConsole.write(array[count] + " ");
+            }
+        }
+
+	</script>
+</body>
+</html>

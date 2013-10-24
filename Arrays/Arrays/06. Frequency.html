@@ -1,0 +1,57 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Frequency</title>
+	<link href="styles/js-console.css" rel="stylesheet" />
+</head>
+<body>
+    <label for="tb-numbers">Sequence: </label>
+    <input type="text" id="tb-numbers" />
+	<a href="#" id="botton" onclick="onBottonClick()">Click</a>
+	<div id="js-console">
+	</div>
+	<script src="scripts/js-console.js">	  
+	</script>
+    <script>
+
+        function onBottonClick() {
+
+            var input = jsConsole.read("#tb-numbers");
+            var array = input.split(" ");
+
+            var differentElements = [array[0]];
+            var frequency = [0];
+            var alone = true;
+
+            for (var position = 0; position < array.length; position++) {
+                for (var number = 0; number < differentElements.length; number++) {
+                    if (array[position] == differentElements[number]) {
+                        frequency[number]++;
+                        alone = false;
+                    }
+                }
+
+                if (alone) {
+                    differentElements.push(array[position]);
+                    frequency.push(1);
+                }
+                alone = true;
+            }
+
+            var currentNumber = 0;
+            var maxFrequency = 0;
+
+            for (var position = 0; position < differentElements.length; position++) {
+                if (frequency[position] > maxFrequency) {
+                    maxFrequency = frequency[position];
+                    currentNumber = differentElements[position];
+                }
+            }
+
+            jsConsole.writeLine("The element with max frequency is " + currentNumber +
+                ". It is repeated " + maxFrequency + " times");
+        }
+
+	</script>
+</body>
+</html>

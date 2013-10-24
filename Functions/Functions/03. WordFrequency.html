@@ -1,0 +1,46 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>WordFrequency</title>
+	<link href="styles/js-console.css" rel="stylesheet" />
+</head>
+<body>
+    <label for="tb-text">Text</label>
+	<input id="tb-text" type="text" class="js-console-input" />
+    <br />
+    <label for="tb-word">Word</label>
+	<input id="tb-word" type="text" class="js-console-input" />
+	<a href="#" class="js-console-btn" onclick="onButtonClick()">Count word frequency</a>
+	<br />
+	<div id="js-console"></div>
+	<script src="scripts/js-console.js"></script>
+    <script>
+
+        function Count(allWords, word) {
+            var frequency = 0;
+
+            for (var count = 0; count < allWords.length; count++) {
+                if (word === allWords[count]) {
+                    frequency++;
+                }
+            }
+
+            return frequency;
+        }
+
+        function onButtonClick() {
+            var text = jsConsole.read("#tb-text");
+            var textLower = text.toLowerCase();
+            var word = jsConsole.read("#tb-word");
+            var wordLower = word.toLowerCase();
+            var allWords = text.split(' ');
+            var allWordsLower = textLower.split(' ');
+
+            jsConsole.writeLine("Case sensitive frequency is " + Count(allWords, word));
+
+            jsConsole.writeLine("Case insensitive frequency is " + Count(allWordsLower, wordLower));
+        }
+
+	</script>
+</body>
+</html>

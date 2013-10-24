@@ -1,0 +1,71 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+</head>
+<script>
+    function Solve(args) {
+
+        var inputInfo = args[0].split(" ");
+        var rows = parseInt(inputInfo[0]);
+        var columns = parseInt(inputInfo[1]);
+        var jumps = parseInt(inputInfo[2]);
+        var inputStart = args[1].split(" ");
+        var startRow = parseInt(inputStart[0]);
+        var startColumn = parseInt(inputStart[1]);
+        var pattern = [];
+        for (var count = 0; count < jumps; count++) {
+            var inputJump = args[2 + count].split(" ");
+            var jumpRow = parseInt(inputJump[0]);
+            var jumpColumn = parseInt(inputJump[1]);
+            var jump = [jumpRow, jumpColumn];
+            pattern.push(jump);
+        }
+
+        var countJumps = 0;
+        var countSum = 0;
+        var visited = [];
+        for (var count = 0; count < rows; count++) {
+            visited.push({});
+        }
+        var currentRow = startRow;
+        var currentColumn = startColumn;
+        var currentPattern = 0;
+        var isCaught = false;
+
+        while (true) {
+            visited[currentRow][currentColumn] = true;
+            countJumps++;
+            countSum += ((currentRow * columns) + currentColumn + 1);
+            if (currentPattern >= jumps) {
+                currentPattern = 0;
+            }
+
+            currentRow += pattern[currentPattern][0];
+            currentColumn += pattern[currentPattern][1];
+            currentPattern++;
+            var escaped = (currentRow < 0 || currentRow >= rows ||
+                currentColumn < 0 || currentColumn >= columns);
+            if (escaped == true) {
+                break;
+            }
+            if (visited[currentRow][currentColumn] == true) {
+                isCaught = true;
+                break;
+            }
+        }
+
+        var result = "";
+        if (isCaught == true) {
+            result = "caught " + countJumps;
+        }
+        else {
+            result = "escaped " + countSum;
+        }
+
+        return result;
+    }
+</script>
+<body onload="Solve()">
+</body>
+</html>

@@ -1,0 +1,39 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Frequency</title>
+    <link href="styles/js-console.css" rel="stylesheet" />
+    <script src="scripts/string-extensions.js"></script>
+</head>
+<body>
+    <label for="tb-text">Text</label>
+	<input id="tb-text" type="text" class="js-console-input" />
+    <br />
+    <label for="tb-substring">Text</label>
+	<input id="tb-substring" type="text" class="js-console-input" />
+	<a href="#" class="js-console-btn" onclick="onButtonClick()">Check</a>
+	<br />
+	<div id="js-console"></div>
+	<script src="scripts/js-console.js"></script>
+    <script>
+
+        function onButtonClick() {
+            var inputText = jsConsole.read("#tb-text");
+            var inputSubstring = jsConsole.read("#tb-substring");
+            var text = inputText.toLowerCase();
+            var substring = inputSubstring.toLowerCase();
+
+            var frequency = 0;
+            var index = text.indexOf(substring);
+            while (index != -1)
+            {
+                frequency++;
+                index = text.indexOf(substring, index + substring.length);
+            }
+
+            jsConsole.writeLine("Substring " + substring + " is repeated " + frequency + " times");
+        }
+
+	</script>
+</body>
+</html>

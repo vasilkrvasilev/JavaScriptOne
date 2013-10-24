@@ -1,0 +1,5 @@
+C:\Users\Vasko\Desktop\Projects JavaScript\PartOne\Strings\Strings\bin\Strings.dll
+C:\Users\Vasko\Desktop\Projects JavaScript\PartOne\Strings\Strings\bin\Strings.pdb
+C:\Users\Vasko\Desktop\Projects JavaScript\PartOne\Strings\Strings\obj\Debug\Strings.csprojResolveAssemblyReference.cache
+C:\Users\Vasko\Desktop\Projects JavaScript\PartOne\Strings\Strings\obj\Debug\Strings.dll
+C:\Users\Vasko\Desktop\Projects JavaScript\PartOne\Strings\Strings\obj\Debug\Strings.pdb

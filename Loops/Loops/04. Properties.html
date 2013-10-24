@@ -1,0 +1,65 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Properties</title>
+	<link href="styles/js-console.css" rel="stylesheet" />
+</head>
+<body>
+    <a href="#" id="botton" onclick="onBottonClick()">Click</a>
+	<div id="js-console">
+	</div>
+	<script src="scripts/js-console.js">	  
+	</script>
+    <script>
+
+        function onBottonClick() {
+
+            var minDocument = "z";
+            var maxDocument = "a";
+            for (var property in document) {
+                if (property > maxDocument) {
+                    maxDocument = property;
+                }
+
+                if (property < minDocument) {
+                    minDocument = property;
+                }
+            }
+
+            jsConsole.writeLine("Lexicographically the smallest property in the document is " + maxDocument);
+            jsConsole.writeLine("Lexicographically the largest property in the document is " + minDocument);
+
+            var minWindow = "z";
+            var maxWindow = "a";
+            for (var property in window) {
+                if (property > maxWindow) {
+                    maxWindow = property;
+                }
+
+                if (property < minWindow) {
+                    minWindow = property;
+                }
+            }
+
+            jsConsole.writeLine("Lexicographically the smallest property in the window is " + maxWindow);
+            jsConsole.writeLine("Lexicographically the largest property in the window is " + minWindow);
+
+            var minNavigator = "z";
+            var maxNavigator = "a";
+            for (var property in navigator) {
+                if (property > maxNavigator) {
+                    maxNavigator = property;
+                }
+
+                if (property < minNavigator) {
+                    minNavigator = property;
+                }
+            }
+
+            jsConsole.writeLine("Lexicographically the smallest property in the navigator is " + maxNavigator);
+            jsConsole.writeLine("Lexicographically the largest property in the navigator is " + minNavigator);
+        }
+
+	</script>
+</body>
+</html>

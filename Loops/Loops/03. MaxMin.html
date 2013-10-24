@@ -1,0 +1,42 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>MinMax</title>
+	<link href="styles/js-console.css" rel="stylesheet" />
+</head>
+<body>
+    <label for="tb-numbers">Sequence: </label>
+    <input type="text" id="tb-numbers" />
+	<a href="#" id="botton" onclick="onBottonClick()">Click</a>
+	<div id="js-console">
+	</div>
+	<script src="scripts/js-console.js">	  
+	</script>
+    <script>
+
+        function onBottonClick() {
+
+            var input = jsConsole.read("#tb-numbers");
+            var sequence = input.split(" ");
+            var max = parseInt(sequence[0]);
+            var min = parseInt(sequence[0]);
+
+            for (var count = 1; count < sequence.length; count++) {
+
+                var currentNumber = parseInt(sequence[count]);
+                if (currentNumber > max) {
+                    max = currentNumber;
+                }
+
+                if (currentNumber < min) {
+                    min = currentNumber;
+                }
+            }
+
+            jsConsole.writeLine("Max number in the sequence is " + max);
+            jsConsole.writeLine("Min number in the sequence is " + min);
+        }
+
+	</script>
+</body>
+</html>

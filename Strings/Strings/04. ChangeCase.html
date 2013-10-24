@@ -1,0 +1,96 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>ChangeCase</title>
+    <link href="styles/js-console.css" rel="stylesheet" />
+    <script src="scripts/string-extensions.js"></script>
+</head>
+<body>
+    <label for="tb-text">Text</label>
+	<input id="tb-text" type="text" class="js-console-input" />
+	<a href="#" class="js-console-btn" onclick="onButtonClick()">Change Case</a>
+	<br />
+	<div id="js-console"></div>
+	<script src="scripts/js-console.js"></script>
+    <script>
+
+        function toUpper(text) {
+            var startTag = "<upcase>";
+            var endTag = "</upcase>";
+            var startIndex = text.indexOf(startTag);
+            var endIndex = text.indexOf(endTag);
+
+            while (startIndex != -1) {
+                var middleToRaplace = text.substring(startIndex, endIndex + endTag.length);
+                var middle = text.substring(startIndex + startTag.length, endIndex);
+                middle = middle.toUpperCase();
+                text = text.replace(middleToRaplace, middle);
+                startIndex = text.indexOf(startTag);
+                endIndex = text.indexOf(endTag);
+            }
+
+            return text;
+        }
+
+        function toLower(text) {
+            var startTag = "<lowcase>";
+            var endTag = "</lowcase>";
+            var startIndex = text.indexOf(startTag);
+            var endIndex = text.indexOf(endTag);
+
+            while (startIndex != -1) {
+                var middleToRaplace = text.substring(startIndex, endIndex + endTag.length);
+                var middle = text.substring(startIndex + startTag.length, endIndex);
+                middle = middle.toLowerCase();
+                text = text.replace(middleToRaplace, middle);
+                startIndex = text.indexOf(startTag);
+                endIndex = text.indexOf(endTag);
+            }
+
+            return text;
+        }
+
+        function toMixCase(text) {
+            for (var count = 0; count < text.length; count++) {
+                if (count % 2 == 0) {
+                    text = text.replace(text[count], text[count].toLowerCase());
+                }
+                else {
+                    text = text.replace(text[count], text[count].toUpperCase());
+                }
+            }
+
+            return text;
+        }
+
+        function toMix(text, startTag, endTag) {
+            var startIndex = text.indexOf(startTag);
+            var endIndex = text.indexOf(endTag);
+
+            while (startIndex != -1) {
+                var middleToRaplace = text.substring(startIndex, endIndex + endTag.length);
+                var middle = text.substring(startIndex + startTag.length, endIndex);
+                middle = toMixCase(middle);
+                text = text.replace(middleToRaplace, middle);
+                startIndex = text.indexOf(startTag);
+                endIndex = text.indexOf(endTag);
+            }
+
+            return text;
+        }
+
+        function onButtonClick() {
+            var text = jsConsole.read("#tb-text");
+
+            text = toLower(text);
+            text = toUpper(text);
+
+            text = toMix(text, "<mixcase>", "</mixcase>");
+            text = toMix(text, "<MIXCASE>", "</MIXCASE>");
+
+            jsConsole.writeLine(text);
+        }
+
+	</script>
+</body>
+</html>

@@ -1,0 +1,59 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+</head>
+<script>
+    function Solve(args) {
+        //var args = ["1, 3, -6, 7, 4, 1, 12", "3", "1, 2, -3", "1, 3, -2", "1, -1"];
+
+        var valleyInput = args[0].split(', ');
+        var length = valleyInput.length;
+        var valley = [];
+        for (var count = 0; count < length; count++) {
+            valley.push(parseInt(valleyInput[count]));
+        }
+        var patterns = parseInt(args[1]);
+        var maxSum = -(Number.MAX_VALUE);
+
+        for (var count = 0; count < patterns; count++) {
+            var inputPattern = args[2 + count].split(', ');
+            var patternLength = inputPattern.length;
+            var currentPattern = [];
+            for (var position = 0; position < patternLength; position++) {
+                currentPattern.push(parseInt(inputPattern[position]));
+            }
+            var visited = {};
+            var patternSum = 0;
+            var currentIndex = 0;
+            var patternIndex = 0;
+
+            while (currentIndex >= 0 && currentIndex < length) {
+                patternSum += valley[currentIndex];
+                visited[currentIndex] = true;
+
+                currentIndex += currentPattern[patternIndex];
+                if (visited[currentIndex] == true) {
+                    break;
+                }
+
+                if (patternIndex < patternLength - 1) {
+                    patternIndex++;
+                }
+                else {
+                    patternIndex = 0;
+                }
+            }
+
+            if (patternSum > maxSum) {
+                maxSum = patternSum;
+            }
+        }
+
+        //console.log(maxSum);
+        return maxSum;
+    }
+</script>
+<body onload="Solve()">
+</body>
+</html>

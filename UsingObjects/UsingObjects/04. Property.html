@@ -1,0 +1,33 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Property</title>
+	<link href="styles/js-console.css" rel="stylesheet" />
+</head>
+<body>
+    <label for="tb-property">Property</label>
+	<input id="tb-property" type="text" class="js-console-input" />
+    <a href="#" class="js-console-btn" onclick="onButtonClick()">Check</a>
+	<br />
+    <br />
+    <div id="js-console"></div>
+	<script src="scripts/js-console.js"></script>
+	<script>
+
+	    function check(object, property) {
+	        for (var item in object) {
+	            if (item == property) {
+	                return true;
+	            }
+	        }
+	        return false;
+	    }
+
+	    function onButtonClick() {
+	        var object = {};
+	        var property = jsConsole.read("#tb-property");
+	        jsConsole.writeLine("Object has this property? " + check(object, property));
+	    }
+	</script>
+</body>
+</html>

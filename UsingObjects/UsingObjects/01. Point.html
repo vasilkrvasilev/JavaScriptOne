@@ -1,0 +1,97 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Point</title>
+	<link href="styles/js-console.css" rel="stylesheet" />
+</head>
+<body>
+    <label>First Line</label>
+    <label for="tb-ffpoint">First Point</label>
+	<input id="tb-ffpoint" type="text" class="js-console-input" />
+    <label for="tb-fspoint">Second Point</label>
+	<input id="tb-fspoint" type="text" class="js-console-input" />
+	<a href="#" class="js-console-btn" onclick="onFirstButtonClick()">Calculate distance</a>
+	<br />
+    <label>Second Line</label>
+    <label for="tb-sfpoint">First Point</label>
+	<input id="tb-sfpoint" type="text" class="js-console-input" />
+    <label for="tb-sspoint">Second Point</label>
+	<input id="tb-sspoint" type="text" class="js-console-input" />
+	<a href="#" class="js-console-btn" onclick="onSecondButtonClick()">Calculate distance</a>
+	<br />
+    <label>Third Line</label>
+    <label for="tb-tfpoint">First Point</label>
+	<input id="tb-tfpoint" type="text" class="js-console-input" />
+    <label for="tb-tspoint">Second Point</label>
+	<input id="tb-tspoint" type="text" class="js-console-input" />
+	<a href="#" class="js-console-btn" onclick="onThirdButtonClick()">Calculate distance</a>
+	<br />
+    <br />
+	<a href="#" class="js-console-btn" onclick="onGeneralButtonClick()">Check for triangle</a>
+	<br />
+    <br />
+	<div id="js-console"></div>
+	<script src="scripts/js-console.js"></script>
+    <script>
+
+        function point(abscissa, ordinate) {
+            return {
+                abscissa: abscissa,
+                ordinate: ordinate
+            };
+        }
+
+        function line(firstPoint, secondPoint) {
+            return {
+                first: firstPoint,
+                second: secondPoint,
+                calculateDistance: function Get() {
+                    var abscissaDistance = Math.abs(firstPoint.abscissa - secondPoint.abscissa);
+                    var ordinateDistance = Math.abs(firstPoint.ordinate - secondPoint.ordinate);
+                    return Math.sqrt(abscissaDistance * abscissaDistance + ordinateDistance * ordinateDistance);
+                }
+            };
+        }
+
+        function createLine(firstInput, secondInput) {
+            var firstData = jsConsole.read(firstInput);
+            var secondData = jsConsole.read(secondInput);
+            var firstCoordinate = firstData.split(' ');
+            var secondCoordinate = secondData.split(' ');
+            var firstPoint = new point(parseInt(firstCoordinate[0]), parseInt(firstCoordinate[1]));
+            var secondPoint = new point(parseInt(secondCoordinate[0]), parseInt(secondCoordinate[1]));
+            var currentLine = new line(firstPoint, secondPoint);
+            return currentLine;
+        }
+
+        function onFirstButtonClick() {
+            var firstLine = createLine("#tb-ffpoint", "#tb-fspoint");
+            jsConsole.writeLine("Distance between the points is " + firstLine.calculateDistance());
+            return firstLine.calculateDistance();
+        }
+
+        function onSecondButtonClick() {
+            var secondLine = createLine("#tb-sfpoint", "#tb-sspoint");
+            jsConsole.writeLine("Distance between the points is " + secondLine.calculateDistance());
+            return secondLine.calculateDistance();
+        }
+
+        function onThirdButtonClick() {
+            var thirdLine = createLine("#tb-tfpoint", "#tb-tspoint");
+            jsConsole.writeLine("Distance between the points is " + thirdLine.calculateDistance());
+            return thirdLine.calculateDistance();
+        }
+
+        function onGeneralButtonClick() {
+            var firstLine = onFirstButtonClick();
+            var secondLine = onSecondButtonClick();
+            var thirdLine = onThirdButtonClick();
+            var isTriangle = (firstLine < (secondLine + thirdLine)) &&
+                (secondLine < (firstLine + thirdLine)) &&
+                (thirdLine < (firstLine + secondLine));
+            jsConsole.writeLine("It is possible to create a triangle? " + isTriangle);
+        }
+
+	</script>
+</body>
+</html>

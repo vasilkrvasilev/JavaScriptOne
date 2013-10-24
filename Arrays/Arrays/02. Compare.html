@@ -1,0 +1,53 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Compare</title>
+	<link href="styles/js-console.css" rel="stylesheet" />
+</head>
+<body>
+    <label for="tb-first">First array: </label>
+    <input type="text" id="tb-first" />
+    <label for="tb-second">Second array: </label>
+    <input type="text" id="tb-second" />
+	<a href="#" id="botton" onclick="onBottonClick()">Click</a>
+	<div id="js-console">
+	</div>
+	<script src="scripts/js-console.js">	  
+	</script>
+    <script>
+
+        function onBottonClick() {
+
+            var first = jsConsole.read("#tb-first");
+            var second = jsConsole.read("#tb-second");
+            var areEqual = true;
+
+            for (var count = 0; count < Math.min(first.length, second.length); count++) {
+                if (first[count] < second[count]) {
+                    jsConsole.writeLine("First array is lexicographically before Second array");
+                    areEqual = false;
+                    break;
+                }
+                if (first[count] > second[count]) {
+                    jsConsole.writeLine("First array is lexicographically after Second array");
+                    areEqual = false;
+                    break;
+                }
+            }
+
+            if (areEqual) {
+                if (first.length == second.length) {
+                    jsConsole.writeLine("First array is equal to the Second array");
+                }
+                else if (first.length > second.length) {
+                    jsConsole.writeLine("First array is lexicographically after Second array");
+                }
+                else {
+                    jsConsole.writeLine("First array is lexicographically before Second array");
+                }
+            }
+        }
+
+	</script>
+</body>
+</html>

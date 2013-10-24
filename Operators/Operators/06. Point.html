@@ -1,0 +1,21 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Point</title>
+	<link href="styles/js-console.css" rel="stylesheet" />
+</head>
+<body>
+    <div id="js-console"></div>
+	<script src="scripts/js-console.js"></script>
+	<script>
+	    var abscissa = parseFloat(prompt("Enter abscissa", 0));
+	    var ordinate = parseFloat(prompt("Enter ordinate", 0));
+	    var squaredSum = (abscissa * abscissa) + (ordinate * ordinate);
+	    var radius = Math.sqrt(squaredSum);
+	    var inCircle = (radius < 5);
+
+	    jsConsole.writeLine("The point is in circle is " + inCircle);
+
+	</script>
+</body>
+</html>

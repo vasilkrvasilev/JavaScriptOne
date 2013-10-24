@@ -1,0 +1,5 @@
+C:\Users\Vasko\Desktop\Projects JavaScript\PartOne\ConditionalStatements\ConditionalStatements\bin\ConditionalStatements.dll
+C:\Users\Vasko\Desktop\Projects JavaScript\PartOne\ConditionalStatements\ConditionalStatements\bin\ConditionalStatements.pdb
+C:\Users\Vasko\Desktop\Projects JavaScript\PartOne\ConditionalStatements\ConditionalStatements\obj\Debug\ConditionalStatements.csprojResolveAssemblyReference.cache
+C:\Users\Vasko\Desktop\Projects JavaScript\PartOne\ConditionalStatements\ConditionalStatements\obj\Debug\ConditionalStatements.dll
+C:\Users\Vasko\Desktop\Projects JavaScript\PartOne\ConditionalStatements\ConditionalStatements\obj\Debug\ConditionalStatements.pdb

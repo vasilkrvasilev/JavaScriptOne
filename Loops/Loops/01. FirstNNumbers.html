@@ -1,0 +1,30 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>FirstNNumbers</title>
+	<link href="styles/js-console.css" rel="stylesheet" />
+</head>
+<body>
+    <label for="tb-number">Number: </label>
+    <input type="text" id="tb-number" />
+	<a href="#" id="botton" onclick="onBottonClick()">Click</a>
+	<div id="js-console">
+	</div>
+	<script src="scripts/js-console.js">	  
+	</script>
+    <script>
+
+        function onBottonClick() {
+
+            var number = jsConsole.readInteger("#tb-number");
+
+            jsConsole.writeLine("Numbers in the interval [1, " + number + "] are:");
+
+            for (var count = 1; count <= number; count++) {
+                jsConsole.writeLine(count);
+            }
+        }
+
+	</script>
+</body>
+</html>

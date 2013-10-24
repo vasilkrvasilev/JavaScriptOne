@@ -1,0 +1,42 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Remove</title>
+	<link href="styles/js-console.css" rel="stylesheet" />
+</head>
+<body>
+    <label for="tb-array">Array</label>
+	<input id="tb-array" type="text" class="js-console-input" />
+    <label for="tb-element">Element</label>
+	<input id="tb-element" type="text" class="js-console-input" />
+	<a href="#" class="js-console-btn" onclick="onButtonClick()">Remove element</a>
+	<br />
+	<div id="js-console"></div>
+	<script src="scripts/js-console.js"></script>
+    <script>
+
+        Array.prototype.remove = function (element) {
+            var removedArray = new Array();
+            for (var count = 0; count < this.length; count++) {
+                if (this[count] !== element) {
+                    removedArray.push(this[count]);
+                }
+            }
+
+            return removedArray;
+        }
+
+        function onButtonClick() {
+            var input = jsConsole.read("#tb-array");
+            var array = input.split(' ');
+            var element = jsConsole.read("#tb-element");
+            var removedArray = array.remove(element);
+
+            for (var count = 0; count < removedArray.length; count++) {
+                jsConsole.write(removedArray[count]);
+            }
+        }
+
+	</script>
+</body>
+</html>

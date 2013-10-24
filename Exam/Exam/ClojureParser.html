@@ -1,0 +1,192 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+</head>
+<script>
+    String.prototype.fullTrim = function () { return this.replace(/(?:(?:^|\n)\s+|\s+(?:$|\n))/g, '').replace(/\s+/g, ' '); };
+
+    function Solve(args) {
+        //var args = ["(def func (+ 1 2))", "(+ 5 2 7  1)", "(- 4 func 0)", "(- 4)", "(/ 2)", "(* 5 7)", "(/ 10 3)", "(/ 10   3   2)"];
+
+        var lines = args.length;
+        var functions = [];
+        var values = [];
+        var noZero = true;
+        for (var count = 0; count < lines && noZero; count++) {
+            var command = args[count];
+            var trimCommand = command.fullTrim();
+            var commandElements = trimCommand.split(" ");
+            var elements = commandElements.length;
+            var currentNumber = 0;
+            var currentResult = parseInt(commandElements[1]);
+            if (isNaN(currentResult) && commandElements[0] != "(def") {
+                currentResult = functions[currentResult];
+            }
+            if (commandElements[0] == "(+") {
+                for (var position = 2; position < elements; position++) {
+                    if (position == elements - 1) {
+                        currentNumber = parseInt(commandElements[position].substring(0, commandElements[position].length - 1));
+                    }
+                    else {
+                        currentNumber = parseInt(commandElements[position]);
+                    }
+                    if (isNaN(currentNumber)) {
+                        var index = functions.indexOf(commandElements[position]);
+                        currentNumber = values[index];
+                    }
+                    currentResult += currentNumber;
+                }
+            }
+            else if (commandElements[0] == "(-") {
+                for (var position = 2; position < elements; position++) {
+                    if (position == elements - 1) {
+                        currentNumber = parseInt(commandElements[position].substring(0, commandElements[position].length - 1));
+                    }
+                    else {
+                        currentNumber = parseInt(commandElements[position]);
+                    }
+                    if (isNaN(currentNumber)) {
+                        var index = functions.indexOf(commandElements[position]);
+                        currentNumber = values[index];
+                    }
+                    currentResult -= currentNumber;
+                }
+            }
+            else if (commandElements[0] == "(/") {
+                for (var position = 2; position < elements; position++) {
+                    if (position == elements - 1) {
+                        currentNumber = parseInt(commandElements[position].substring(0, commandElements[position].length - 1));
+                    }
+                    else {
+                        currentNumber = parseInt(commandElements[position]);
+                    }
+                    if (isNaN(currentNumber)) {
+                        var index = functions.indexOf(commandElements[position]);
+                        currentNumber = values[index];
+                    }
+                    if (currentNumber == 0) {
+                        noZero = false;
+                        break;
+                    }
+                    currentResult = Math.floor(currentResult / currentNumber);
+                }
+            }
+            else if (commandElements[0] == "(*") {
+                for (var position = 2; position < elements; position++) {
+                    if (position == elements - 1) {
+                        currentNumber = parseInt(commandElements[position].substring(0, commandElements[position].length - 1));
+                    }
+                    else {
+                        currentNumber = parseInt(commandElements[position]);
+                    }
+                    if (isNaN(currentNumber)) {
+                        var index = functions.indexOf(commandElements[position]);
+                        currentNumber = values[index];
+                    }
+                    currentResult *= currentNumber;
+                }
+            }
+            else if (commandElements[0] == "(def") {
+                var currentFunction = commandElements[1];
+                if (commandElements[2] != "(+" && commandElements[2] != "(-"
+                    && commandElements[2] != "(/" && commandElements[2] != "(*") {
+                    functions.push(currentFunction);
+                    currentNumber = parseInt(commandElements[position].substring(0, commandElements[position].length - 1));
+                    if (isNaN(currentNumber)) {
+                        var index = functions.indexOf(currentNumber);
+                        values.push(values[index]);
+                    }
+                    else {
+                        values.push(currentNumber);
+                    }
+                }
+                else {
+                    var currentNumber = 0;
+                    var currentResult = parseInt(commandElements[3]);
+                    if (isNaN(currentNumber)) {
+                        currentResult = functions[currentResult];
+                    }
+                    if (commandElements[2] == "(+") {
+                        for (var position = 4; position < elements; position++) {
+                            if (position == elements - 1) {
+                                currentNumber = parseInt(commandElements[position].substring(0, commandElements[position].length - 2));
+                            }
+                            else {
+                                currentNumber = parseInt(commandElements[position]);
+                            }
+                            if (isNaN(currentNumber)) {
+                                var index = functions.indexOf(commandElements[position]);
+                                currentNumber = values[index];
+                            }
+                            currentResult += currentNumber;
+                        }
+                    }
+                    else if (commandElements[2] == "(-") {
+                        for (var position = 4; position < elements; position++) {
+                            if (position == elements - 1) {
+                                currentNumber = parseInt(commandElements[position].substring(0, commandElements[position].length - 2));
+                            }
+                            else {
+                                currentNumber = parseInt(commandElements[position]);
+                            }
+                            if (isNaN(currentNumber)) {
+                                var index = functions.indexOf(commandElements[position]);
+                                currentNumber = values[index];
+                            }
+                            currentResult -= currentNumber;
+                        }
+                    }
+                    else if (commandElements[2] == "(/") {
+                        for (var position = 4; position < elements; position++) {
+                            if (position == elements - 1) {
+                                currentNumber = parseInt(commandElements[position].substring(0, commandElements[position].length - 2));
+                            }
+                            else {
+                                currentNumber = parseInt(commandElements[position]);
+                            }
+                            if (isNaN(currentNumber)) {
+                                var index = functions.indexOf(commandElements[position]);
+                                currentNumber = values[index];
+                            }
+                            if (currentNumber == 0) {
+                                noZero = false;
+                                break;
+                            }
+                            currentResult = Math.floor(currentResult / currentNumber);
+                        }
+                    }
+                    else if (commandElements[2] == "(*") {
+                        for (var position = 4; position < elements; position++) {
+                            if (position == elements - 1) {
+                                currentNumber = parseInt(commandElements[position].substring(0, commandElements[position].length - 2));
+                            }
+                            else {
+                                currentNumber = parseInt(commandElements[position]);
+                            }
+                            if (isNaN(currentNumber)) {
+                                var index = functions.indexOf(commandElements[position]);
+                                currentNumber = values[index];
+                            }
+                            currentResult *= currentNumber;
+                        }
+                    }
+                    functions.push(currentFunction);
+                    values.push(currentResult);
+                }
+            }
+        }
+
+        //console.log(currentResult);
+        if (noZero) {
+            return currentResult;
+        }
+        else {
+
+            return "Devision by zero! At Line:" + (count + 1);
+        }
+    }
+</script>
+<body onload="Solve()">
+</body>
+</html>

@@ -1,0 +1,65 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+</head>
+<script>
+    function Solve(args) {
+        //var args = ["4","-1, 0, -3, -2, 0, -2","-1, 3, 1, 0, 2, 0","-9, 1, 1, -7","1, -5, -3, -1, 3, -2, 2, 1, 1"];
+
+        var rows = parseInt(args[0]);
+        var map = [];
+        for (var row = 0; row < rows; row++) {
+            var currentRow = args[1 + row].split(", ");
+            var columns = currentRow.length;
+            var rowMap = [];
+            for (var column = 0; column < columns; column++) {
+                rowMap.push(parseInt(currentRow[column]));
+            }
+            map.push(rowMap);
+        }
+
+        var maxValue = 0;
+        var columns = map[0].length;
+        for (var column = 0; column < columns; column++) {
+            var value = 0;
+            var visited = [];
+            for (var count = 0; count < rows; count++) {
+                visited.push({});
+            }
+            var currentRow = 0;
+            var currentColumn = column;
+            var currentValue = map[currentRow][currentColumn];
+            while (currentValue >= 0) {
+                value++;
+                visited[currentRow][currentColumn] = true;
+                currentColumn = currentValue;
+                if (currentRow < row - 1) {
+                    currentRow++;
+                }
+                else {
+                    currentRow = 0;
+                }
+
+                if (visited[currentRow][currentColumn] == true) {
+                    break;
+                }
+                currentValue = map[currentRow][currentColumn];
+            }
+
+            if (currentValue < 0) {
+                value += (Math.abs(currentValue) + 1);
+            }
+
+            if (value > maxValue) {
+                maxValue = value;
+            }
+        }
+
+        //console.log(maxValue);
+        return maxValue;
+    }
+</script>
+<body onload="Solve()">
+</body>
+</html>

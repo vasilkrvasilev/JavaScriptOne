@@ -1,0 +1,5 @@
+C:\Users\Vasko\Desktop\Projects JavaScript\PartOne\ExamPreparation\ExamPreparation\bin\ExamPreparation.dll
+C:\Users\Vasko\Desktop\Projects JavaScript\PartOne\ExamPreparation\ExamPreparation\bin\ExamPreparation.pdb
+C:\Users\Vasko\Desktop\Projects JavaScript\PartOne\ExamPreparation\ExamPreparation\obj\Debug\ExamPreparation.csprojResolveAssemblyReference.cache
+C:\Users\Vasko\Desktop\Projects JavaScript\PartOne\ExamPreparation\ExamPreparation\obj\Debug\ExamPreparation.dll
+C:\Users\Vasko\Desktop\Projects JavaScript\PartOne\ExamPreparation\ExamPreparation\obj\Debug\ExamPreparation.pdb

@@ -1,0 +1,20 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Divisible</title>
+	<link href="styles/js-console.css" rel="stylesheet" />
+</head>
+<body>
+    <div id="js-console"></div>
+	<script src="scripts/js-console.js"></script>
+	<script>
+	    var number = parseInt(prompt("Enter number", 0));
+	    var remainder = number % ( 5 * 7);
+	    var result = remainder ? "The number is not divisible by five and seven simultaneously" :
+            "The number is divisible by five and seven simultaneously";
+
+	    jsConsole.writeLine(result);
+
+	</script>
+</body>
+</html>

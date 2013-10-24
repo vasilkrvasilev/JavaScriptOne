@@ -1,0 +1,58 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+</head>
+<script>
+    function Solve(args) {
+        //var args = ["1, -2, -3, 4, -5, 6, -7, -8"];
+
+        var array = args[0].split(", ");
+        var elements = array.length;
+        var terrain = [];
+        for (var count = 0; count < elements; count++) {
+            terrain.push(parseInt(array[count]));
+        }
+
+        var maxPath = 0;
+        for (var step = 1; step <= elements; step++) {
+            for (var count = 0; count < elements; count++) {
+                var path = 0;
+                var visited = {};
+                var position = count;
+                while (visited[position] != true) {
+                    path++;
+                    visited[position] = true;
+                    var currentValue = terrain[position];
+                    //position = (position + step) % elements;
+                    position += step;
+                    if (position > elements) {
+                        position -= elements;
+                    }
+                    var nextValue = terrain[position];
+                    if (nextValue <= currentValue) {
+                        break;
+                    }
+                }
+
+                if (path > maxPath) {
+                    maxPath = path;
+                }
+
+                //if (maxPath == elements) {
+                //    break;
+                //}
+            }
+
+            //if (maxPath == elements) {
+            //    break;
+            //}
+        }
+
+        //console.log(maxPath);
+        return maxPath;
+    }
+</script>
+<body onload="Solve()">
+</body>
+</html>

@@ -1,0 +1,46 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>QuadraticEquation</title>
+	<link href="styles/js-console.css" rel="stylesheet" />
+</head>
+<body>
+    <label for="tb-first">First coefficient: </label>
+	<input type="text" id="tb-first"/>
+	<br />							  
+	<label for="tb-second">Second coefficient: </label>
+	<input type="text" id="tb-second"/>
+	<br />
+    <label for="tb-third">Third coefficient: </label>
+	<input type="text" id="tb-third"/>
+	<br />
+	<a href="#" onclick="onButtonClick()">Click</a>
+	<div id="console">
+	</div>
+	<script src="scripts/js-console.js">	  
+	</script>		  
+	<script>
+
+	    function onButtonClick() {
+	        var first = jsConsole.readFloat("#tb-first");
+	        var second = jsConsole.readFloat("#tb-second");
+	        var third = jsConsole.readFloat("#tb-third");
+
+	            var discriminant = (second * second) - (4 * first * third);
+	            if (discriminant < 0) {
+	                jsConsole.writeLine("The quadratic equation does not have real roots");
+	            }
+	            else if (discriminant == 0) {
+	                var root = -second / (2 * first);
+	                jsConsole.writeLine("The quadratic equation has one real root: " + root);
+	            }
+	            else {
+	                var discriminantSquareRoot = Math.sqrt(discriminant);
+	                var rootOne = (-second + discriminantSquareRoot) / (2 * first);
+	                var rootTwo = (-second - discriminantSquareRoot) / (2 * first);
+	                jsConsole.writeLine("The quadratic equation has two real roots: " + rootOne + ", " + rootTwo);
+	            }
+	        }
+	</script>	
+</body>
+</html>

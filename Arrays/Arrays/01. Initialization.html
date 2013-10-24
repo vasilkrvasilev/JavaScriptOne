@@ -1,0 +1,21 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Initialization</title>
+	<link href="styles/js-console.css" rel="stylesheet" />
+</head>
+<body>
+    <div id="js-console"></div>
+	<script src="scripts/js-console.js"></script>
+	<script>
+
+	    var array = new Array(20);
+
+	    for (var count = 0; count < array.length; count++) {
+	        array[count] = count * 5;
+	    }
+
+	    jsConsole.writeLine(array.join(", "));
+	</script>
+</body>
+</html>

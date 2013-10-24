@@ -1,0 +1,56 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>IncreasingElements</title>
+	<link href="styles/js-console.css" rel="stylesheet" />
+</head>
+<body>
+    <label for="tb-numbers">Sequence: </label>
+    <input type="text" id="tb-numbers" />
+	<a href="#" id="botton" onclick="onBottonClick()">Click</a>
+	<div id="js-console">
+	</div>
+	<script src="scripts/js-console.js">	  
+	</script>
+    <script>
+
+        function onBottonClick() {
+
+            var input = jsConsole.read("#tb-numbers");
+            var array = input.split(" ");
+
+            var maxEnd = 0;
+            var maxLength = 0;
+            var sequence = 1;
+
+            for (var count = 1; count < array.length; count++) {
+
+                if (parseInt(array[count]) > parseInt(array[count - 1])) {
+                    sequence++;
+                }
+                else {
+                    if (sequence > maxLength) {
+                        maxLength = sequence;
+                        maxEnd = count;
+                        sequence = 1;
+                    }
+                    else {
+                        sequence = 1;
+                    }
+                }
+            }
+
+            if (sequence > maxLength) {
+                maxLenght = sequence;
+                maxEnd = array.length;
+            }
+
+            jsConsole.writeLine("The sequence with max length is:");
+            for (var count = maxEnd - maxLength; count < maxEnd; count++) {
+                jsConsole.write(array[count] + " ");
+            }
+        }
+
+	</script>
+</body>
+</html>

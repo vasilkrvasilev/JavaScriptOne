@@ -1,0 +1,5 @@
+C:\Users\Vasko\Desktop\Projects JavaScript\PartOne\Arrays\Arrays\bin\Arrays.dll
+C:\Users\Vasko\Desktop\Projects JavaScript\PartOne\Arrays\Arrays\bin\Arrays.pdb
+C:\Users\Vasko\Desktop\Projects JavaScript\PartOne\Arrays\Arrays\obj\Debug\Arrays.csprojResolveAssemblyReference.cache
+C:\Users\Vasko\Desktop\Projects JavaScript\PartOne\Arrays\Arrays\obj\Debug\Arrays.dll
+C:\Users\Vasko\Desktop\Projects JavaScript\PartOne\Arrays\Arrays\obj\Debug\Arrays.pdb

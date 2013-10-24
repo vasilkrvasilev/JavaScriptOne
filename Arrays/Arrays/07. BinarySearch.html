@@ -1,0 +1,68 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>BinarySearch</title>
+	<link href="styles/js-console.css" rel="stylesheet" />
+</head>
+<body>
+    <label for="tb-numbers">Increasing Sequence: </label>
+    <input type="text" id="tb-numbers" />
+    <label for="tb-number">Searched Number: </label>
+    <input type="text" id="tb-number" />
+	<a href="#" id="botton" onclick="onBottonClick()">Click</a>
+	<div id="js-console">
+	</div>
+	<script src="scripts/js-console.js">	  
+	</script>
+    <script>
+
+        function onBottonClick() {
+
+            var input = jsConsole.read("#tb-numbers");
+            var array = input.split(" ");
+            var number = jsConsole.readInteger("#tb-number");
+
+            var elements = array.length;
+            var noNumber = true;
+            var firstElement = 0;                               //First element in the area we search
+            var endElement = elements - 1;                      //Last element in the area we search
+            var middleElement = parseInt(elements / 2);         //Middle element in the area we search
+
+            while (elements > 0) {
+                if (number == parseInt(array[middleElement])) {
+                    jsConsole.writeLine(number + " is on " + middleElement + " position in the sorted array (from 0)");
+                    noNumber = false;
+                    break;
+                }
+                else if (number < parseInt(array[middleElement])) {
+
+                    if (firstElement != middleElement) {
+                        endElement = middleElement - 1;
+                        elements = middleElement - firstElement;
+                        middleElement = firstElement + parseInt(elements / 2);
+                    }
+                    else {
+                        elements = 0;
+                    }
+                }
+                else {
+
+                    if (firstElement != middleElement) {
+                        firstElement = middleElement + 1;
+                        elements = endElement - middleElement;
+                        middleElement = firstElement + parseInt(elements / 2);
+                    }
+                    else {
+                        elements = 0;
+                    }
+                }
+            }
+
+            if (noNumber) {
+                jsConsole.writeLine("There is no " + number + " in the array");
+            }
+        }
+
+	</script>
+</body>
+</html>

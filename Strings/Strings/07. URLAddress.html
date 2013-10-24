@@ -1,0 +1,40 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>URLAddress</title>
+    <link href="styles/js-console.css" rel="stylesheet" />
+    <script src="scripts/string-extensions.js"></script>
+</head>
+<body>
+    <label for="tb-text">URL Address</label>
+	<input id="tb-text" type="text" class="js-console-input" />
+	<a href="#" class="js-console-btn" onclick="onButtonClick()">Extract</a>
+	<br />
+	<div id="js-console"></div>
+	<script src="scripts/js-console.js"></script>
+    <script>
+
+        function onButtonClick() {
+            var text = jsConsole.read("#tb-text");
+            var indexOfProtocol = text.indexOf(':');
+            var protocol = text.substring(0, indexOfProtocol);
+            var firstIndex = text.indexOf('/');
+            var secondIndex = text.indexOf('/', firstIndex + 2);
+            var server = text.substring(firstIndex + 2, secondIndex);
+            var resourse = text.substring(secondIndex, text.length);
+
+            var url = {
+                protocol: protocol,
+                server: server,
+                resourse: resourse
+            };
+
+            for (var property in url) {
+                jsConsole.writeLine(property);
+                jsConsole.writeLine(url[property]);
+            }
+        }
+
+	</script>
+</body>
+</html>

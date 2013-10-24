@@ -1,0 +1,5 @@
+C:\Users\Vasko\Desktop\Projects JavaScript\PartOne\Functions\Functions\bin\Functions.dll
+C:\Users\Vasko\Desktop\Projects JavaScript\PartOne\Functions\Functions\bin\Functions.pdb
+C:\Users\Vasko\Desktop\Projects JavaScript\PartOne\Functions\Functions\obj\Debug\Functions.csprojResolveAssemblyReference.cache
+C:\Users\Vasko\Desktop\Projects JavaScript\PartOne\Functions\Functions\obj\Debug\Functions.dll
+C:\Users\Vasko\Desktop\Projects JavaScript\PartOne\Functions\Functions\obj\Debug\Functions.pdb

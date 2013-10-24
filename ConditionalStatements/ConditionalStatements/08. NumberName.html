@@ -1,0 +1,210 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>NumberName</title>
+	<link href="styles/js-console.css" rel="stylesheet" />
+</head>
+<body>
+    <label for="tb-fifth">Number: </label>
+	<input type="text" id="tb-number"/>
+	<br />
+	<a href="#" onclick="onButtonClick()">Click</a>
+	<div id="console">
+	</div>
+	<script src="scripts/js-console.js">	  
+	</script>
+    <script>
+
+        function onButtonClick() {
+            var number = jsConsole.readFloat("#tb-number");
+
+            var thirdDigit = number % 10;
+            var secondDigit = ((number - thirdDigit) % 100) / 10;
+            var firstDigit = (number - thirdDigit - (secondDigit * 10)) / 100;
+
+            if (number == 0) {
+                jsConsole.write("Zero")
+            }
+            switch (firstDigit) {
+                case 0:
+                    break;
+                case 1:
+                    jsConsole.write("One hundred ");
+                    break;
+                case 2:
+                    jsConsole.write("Two hundred ");
+                    break;
+                case 3:
+                    jsConsole.write("Three hundred ");
+                    break;
+                case 4:
+                    jsConsole.write("Four hundred ");
+                    break;
+                case 5:
+                    jsConsole.write("Five hundred ");
+                    break;
+                case 6:
+                    jsConsole.write("Six hundred ");
+                    break;
+                case 7:
+                    jsConsole.write("Seven hundred ");
+                    break;
+                case 8:
+                    jsConsole.write("Eight hundred ");
+                    break;
+                case 9:
+                    jsConsole.write("Nine hundred ");
+                    break;
+                default:
+                    jsConsole.writeLine("invalid number");
+                    break;
+            }
+
+            switch (secondDigit) {
+                case 0:
+                    break;
+                case 1:
+                    break;
+                case 2:
+                    jsConsole.write("Twenty");
+                    break;
+                case 3:
+                    jsConsole.write("Thirty");
+                    break;
+                case 4:
+                    jsConsole.write("Forty");
+                    break;
+                case 5:
+                    jsConsole.write("Fifty");
+                    break;
+                case 6:
+                    jsConsole.write("Sixty");
+                    break;
+                case 7:
+                    jsConsole.write("Seventy");
+                    break;
+                case 8:
+                    jsConsole.write("Eighty");
+                    break;
+                case 9:
+                    jsConsole.write("Ninety");
+                    break;
+                default:
+                    jsConsole.writeLine("invalid number");
+                    break;
+            }
+
+            if (secondDigit == 0) {
+                switch (thirdDigit) {
+                    case 0:
+                        break;
+                    case 1:
+                        jsConsole.write("One");
+                        break;
+                    case 2:
+                        jsConsole.write("Two");
+                        break;
+                    case 3:
+                        jsConsole.write("Three");
+                        break;
+                    case 4:
+                        jsConsole.write("Four");
+                        break;
+                    case 5:
+                        jsConsole.write("Five");
+                        break;
+                    case 6:
+                        jsConsole.write("Six");
+                        break;
+                    case 7:
+                        jsConsole.write("Seven");
+                        break;
+                    case 8:
+                        jsConsole.write("Eight");
+                        break;
+                    case 9:
+                        jsConsole.write("Nine");
+                        break;
+                    default:
+                        jsConsole.writeLine("invalid number");
+                        break;
+                }
+            }
+            else if (secondDigit == 1) {
+                switch (thirdDigit) {
+                    case 0:
+                        jsConsole.write("Ten");
+                        break;
+                    case 1:
+                        jsConsole.write("Eleven");
+                        break;
+                    case 2:
+                        jsConsole.write("Twelve");
+                        break;
+                    case 3:
+                        jsConsole.write("Thirteen");
+                        break;
+                    case 4:
+                        jsConsole.write("Fourteen");
+                        break;
+                    case 5:
+                        jsConsole.write("Fifteen");
+                        break;
+                    case 6:
+                        jsConsole.write("Sixteen");
+                        break;
+                    case 7:
+                        jsConsole.write("Seventeen");
+                        break;
+                    case 8:
+                        jsConsole.write("Eighteen");
+                        break;
+                    case 9:
+                        jsConsole.write("Nineteen");
+                        break;
+                    default:
+                        jsConsole.writeLine("invalid number");
+                        break;
+                }
+            }
+            else {
+                switch (thirdDigit) {
+                    case 0:
+                        break;
+                    case 1:
+                        jsConsole.write("-one");
+                        break;
+                    case 2:
+                        jsConsole.write("-two");
+                        break;
+                    case 3:
+                        jsConsole.write("-three");
+                        break;
+                    case 4:
+                        jsConsole.write("-four");
+                        break;
+                    case 5:
+                        jsConsole.write("-five");
+                        break;
+                    case 6:
+                        jsConsole.write("-six");
+                        break;
+                    case 7:
+                        jsConsole.write("-seven");
+                        break;
+                    case 8:
+                        jsConsole.write("-eight");
+                        break;
+                    case 9:
+                        jsConsole.write("-nine");
+                        break;
+                    default:
+                        jsConsole.writeLine("invalid number");
+                        break;
+                }
+            }
+            jsConsole.writeLine("");
+        }
+	</script>			  
+</body>
+</html>

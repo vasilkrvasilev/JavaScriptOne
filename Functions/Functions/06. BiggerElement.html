@@ -1,0 +1,51 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>BiggerElement</title>
+	<link href="styles/js-console.css" rel="stylesheet" />
+</head>
+<body>
+    <label for="tb-array">Array</label>
+	<input id="tb-array" type="text" class="js-console-input" />
+    <br />
+    <label for="tb-index">Index</label>
+	<input id="tb-index" type="text" class="js-console-input" />
+	<a href="#" class="js-console-btn" onclick="onButtonClick()">Click to check</a>
+	<br />
+	<div id="js-console"></div>
+	<script src="scripts/js-console.js"></script>
+    <script>
+
+        function Check(array, elements, index) {
+            var isBigger = false;
+
+            if (index >= elements || index < 0) {
+                jsConsole.writeLine("There is no such element in the array");
+                return undefined;
+            }
+            else if (index == 0) {
+                isBigger = (array[index] > array[index + 1]);
+                return isBigger;
+            }
+            else if (index == elements - 1) {
+                isBigger = (array[index] > array[index - 1]);
+                return isBigger;
+            }
+            else {
+                isBigger = (array[index] > array[index + 1]) && (array[index] > array[index - 1]);
+                return isBigger;
+            }
+        }
+
+        function onButtonClick() {
+            var input = jsConsole.read("#tb-array");
+            var array = input.split(' ');
+            var elements = array.length;
+            var index = jsConsole.readInteger("#tb-index");
+
+            jsConsole.writeLine("Element on position " + index + " is bigger than its neighbors: " + Check(array, elements, index));
+        }
+
+	</script>
+</body>
+</html>

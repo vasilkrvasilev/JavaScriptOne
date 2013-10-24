@@ -1,0 +1,39 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Digit</title>
+	<link href="styles/js-console.css" rel="stylesheet" />
+</head>
+<body>
+    <label for="tb-digit">Digit: </label>
+	<input type="text" id="tb-digit" />
+	<br />
+	<a href="#" onclick="onButtonClick()">Click</a>
+	<div id="console">
+	</div>
+	<script src="scripts/js-console.js">	  
+	</script>
+	<script>
+	    function onButtonClick() {
+	        var digit = jsConsole.readInteger("#tb-digit");
+
+	        var digitName;
+	        switch (digit) {
+	            case 1: digitName = "One"; break;
+	            case 2: digitName = "Two"; break;
+	            case 3: digitName = "Three"; break;
+	            case 4: digitName = "Four"; break;
+	            case 5: digitName = "Five"; break;
+	            case 6: digitName = "Six"; break;
+	            case 7: digitName = "Seven"; break;
+	            case 8: digitName = "Eight"; break;
+	            case 9: digitName = "Nine"; break;
+	            case 0: digitName = "Zero"; break;
+	            default:
+	                digitName = "Invalid digit"; break;
+	        }
+	        jsConsole.writeLine(digitName);
+	    }
+	</script>
+</body>
+</html>

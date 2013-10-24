@@ -1,0 +1,5 @@
+C:\Users\Vasko\Desktop\Projects JavaScript\PartOne\Operators\Operators\bin\Operators.dll
+C:\Users\Vasko\Desktop\Projects JavaScript\PartOne\Operators\Operators\bin\Operators.pdb
+C:\Users\Vasko\Desktop\Projects JavaScript\PartOne\Operators\Operators\obj\Debug\Operators.csprojResolveAssemblyReference.cache
+C:\Users\Vasko\Desktop\Projects JavaScript\PartOne\Operators\Operators\obj\Debug\Operators.dll
+C:\Users\Vasko\Desktop\Projects JavaScript\PartOne\Operators\Operators\obj\Debug\Operators.pdb

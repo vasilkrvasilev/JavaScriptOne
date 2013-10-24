@@ -1,0 +1,40 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>DeepCopy</title>
+	<link href="styles/js-console.css" rel="stylesheet" />
+</head>
+<body>
+    <a href="#" class="js-console-btn" onclick="onButtonClick()">Copy</a>
+	<br />
+    <br />
+    <div id="js-console"></div>
+	<script src="scripts/js-console.js"></script>
+	<script>
+
+	    function deepCopy(object) {
+	        if (Object.prototype.toString.call(object) === '[object Array]') {
+	            var out = [], i = 0, length = object.length;
+	            for (; i < length; i++) {
+	                out[i] = arguments.callee(object[i]);
+	            }
+	            return out;
+	        }
+	        if (typeof object === 'object') {
+	            var out = {}, i;
+	            for (i in object) {
+	                out[i] = arguments.callee(object[i]);
+	            }
+	            return out;
+	        }
+	        return object;
+	    }
+
+	    function onButtonClick() {
+	        var object = {};
+	        var copy = deepCopy(object);
+	        jsConsole.writeLine(copy + "Copy successful");
+	    }
+	</script>
+</body>
+</html>

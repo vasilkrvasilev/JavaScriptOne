@@ -1,0 +1,60 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+</head>
+<script>
+    function Solve(args) {
+        var elements = parseInt(args[0]);
+        var array = args[1].split(' ');
+        //var elements = array.length;
+        var result = [];
+        var visited = {};
+        var notCycle = [];
+        var cycle = [];
+        var currentIndex = 0;
+        var separateIndex = -1;
+        while (currentIndex >= 0 && currentIndex < elements) {
+
+            result.push(currentIndex);
+            visited[currentIndex] = true;
+            currentIndex = array[currentIndex];
+            if (visited[currentIndex] == true) {
+                var length = result.length;
+                for (var count = 0; count < length; count++) {
+                    if (currentIndex == result[count]) {
+                        separateIndex = count;
+                        break;
+                    }
+                }
+
+                for (var count = 0; count < separateIndex; count++) {
+                    notCycle.push(result[count]);
+                }
+                for (var count = separateIndex; count < length; count++) {
+                    cycle.push(result[count]);
+                }
+
+                //cycle = result.splice(separateIndex, length - separateIndex);
+                //notCycle = result.splice(0, separateIndex);
+                break;
+            }
+        }
+
+        var notCycleString = "";
+        var cycleString = "";
+        if (separateIndex != -1) {
+            notCycleString = notCycle.join(' ');
+            cycleString = "(" + cycle.join(' ') + ")";
+        }
+        else {
+            notCycleString = result.join(' ');
+        }
+
+        var answer = notCycleString + cycleString;
+        return answer;
+    }
+</script>
+<body onload="Solve()">
+</body>
+</html>

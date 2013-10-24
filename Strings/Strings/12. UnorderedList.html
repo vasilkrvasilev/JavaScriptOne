@@ -1,0 +1,80 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>UnorderedList</title>
+    <link href="styles/js-console.css" rel="stylesheet" />
+    <script src="scripts/string-extensions.js"></script>
+</head>
+<body>
+    <label for="tb-name">Names</label>
+	<input id="tb-name" type="text" class="js-console-input" />
+    <label for="tb-age">Ages</label>
+	<input id="tb-age" type="text" class="js-console-input" />
+    <br />
+    <label for="tb-template">Template</label>
+	<input id="tb-template" type="text" class="js-console-input" />
+	<a href="#" class="js-console-btn" onclick="onButtonClick()">Format</a>
+	<br />
+	<div id="js-console"></div>
+	<script src="scripts/js-console.js"></script>
+    <script>
+
+        function person(name, age) {
+            return {
+                name: name,
+                age: age
+            };
+        }
+
+        function parsePerson() {
+            var nameInput = jsConsole.read("#tb-name");
+            var ageInput = jsConsole.read("#tb-age");
+            var nameData = nameInput.split(',');
+            var ageData = ageInput.split(',');
+            var human = [];
+            var elements = nameData.length;
+
+            for (var count = 0; count < elements; count++) {
+                currentPerson = new person(nameData[count], parseInt(ageData[count]));
+                human[count] = currentPerson;
+            }
+
+            return human;
+        }
+
+        function stringFormat(template, current) {
+            for (var property in current) {
+                var different = true;
+                while (different == true) {
+                    var changedTemplate = template.replace("-{" + property + "}-", current[property]);
+                    if (template == changedTemplate) {
+                        different = false;
+                    }
+
+                    template = changedTemplate;
+                }
+            }
+
+            return template;
+        }
+
+        function onButtonClick() {
+            var template = jsConsole.read("#tb-template");
+            var human = parsePerson();
+            var elements = human.length;
+            var result = ["<ul>"];
+
+            for (var count = 0; count < elements; count++) {
+                result.push("<li>");
+                result.push(stringFormat(template, human[count]));
+                result.push("</li>");
+            }
+
+            result.push("</ul>");
+            var resultCode = result.join("");
+            jsConsole.writeLine(resultCode);
+        }
+
+	</script>
+</body>
+</html>

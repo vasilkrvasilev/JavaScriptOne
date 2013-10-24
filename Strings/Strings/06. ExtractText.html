@@ -1,0 +1,37 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>ExtractText</title>
+    <link href="styles/js-console.css" rel="stylesheet" />
+    <script src="scripts/string-extensions.js"></script>
+</head>
+<body>
+    <label for="tb-text">Text</label>
+	<input id="tb-text" type="text" class="js-console-input" />
+	<a href="#" class="js-console-btn" onclick="onButtonClick()">Extract</a>
+	<br />
+	<div id="js-console"></div>
+	<script src="scripts/js-console.js"></script>
+    <script>
+
+        function onButtonClick() {
+            var text = jsConsole.read("#tb-text");
+            var result = [];
+            var firstIndex = text.indexOf('<');
+            var secondIndex = text.indexOf('>');
+            firstIndex = text.indexOf('<', secondIndex);
+
+            while (firstIndex != -1) {
+                var extract = text.substring(secondIndex + 1, firstIndex);
+                result.push(extract);
+                secondIndex = text.indexOf('>', firstIndex);
+                firstIndex = text.indexOf('<', secondIndex);
+            }
+            
+            var extractText = result.join("");         
+            jsConsole.writeLine(extractText);
+        }
+
+	</script>
+</body>
+</html>

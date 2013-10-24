@@ -1,0 +1,52 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Polindromes</title>
+    <link href="styles/js-console.css" rel="stylesheet" />
+    <script src="scripts/string-extensions.js"></script>
+</head>
+<body>
+    <label for="tb-text">Text</label>
+	<input id="tb-text" type="text" class="js-console-input" />
+	<a href="#" class="js-console-btn" onclick="onButtonClick()">Extract</a>
+	<br />
+	<div id="js-console"></div>
+	<script src="scripts/js-console.js"></script>
+    <script>
+
+        function onButtonClick() {
+            var text = jsConsole.read("#tb-text");
+            jsConsole.writeLine("Symmetric words (palindromes) in the text are:");
+            text = text.replace(/,/g, "");
+            text = text.replace(/"/g, "");
+            text = text.replace(/\./g, "");
+            text = text.replace(/!/g, "");
+            text = text.replace(/\?/g, "");
+            text = text.replace(/:/g, "");
+            text = text.replace(/;/g, "");
+            text = text.replace(/\(/g, "");
+            text = text.replace(/\)/g, "");
+            text = text.replace(/</g, "");
+            text = text.replace(/>/g, "");
+            var words = text.split(' ');
+            var length = words.length;
+
+            for (var count = 0; count < length; count++) {
+                var wordLength = words[count].length;
+                var isSymmetric = true;
+                for (var letter = 0; letter < wordLength / 2 ; letter++) {
+                    if (words[count][letter] != words[count][wordLength - 1 - letter]) {
+                        isSymmetric = false;
+                        break;
+                    }
+                }
+
+                if (isSymmetric == true && wordLength > 0) {
+                    jsConsole.writeLine(words[count]);
+                }
+            }
+        }
+
+	</script>
+</body>
+</html>

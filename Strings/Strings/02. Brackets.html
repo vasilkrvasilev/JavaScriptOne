@@ -1,0 +1,44 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Reverse</title>
+    <link href="styles/js-console.css" rel="stylesheet" />
+    <script src="scripts/string-extensions.js"></script>
+</head>
+<body>
+    <label for="tb-expression">Expression</label>
+	<input id="tb-expression" type="text" class="js-console-input" />
+	<a href="#" class="js-console-btn" onclick="onButtonClick()">Check</a>
+	<br />
+	<div id="js-console"></div>
+	<script src="scripts/js-console.js"></script>
+    <script>
+
+        function onButtonClick() {
+            var expression = jsConsole.read("#tb-expression");
+            var leftBrackets = 0;
+            var correct = true;
+            for (var sign = 0; sign < expression.length; sign++)
+            {
+                if (expression[sign] == '(') {
+                    leftBrackets++;
+                }
+                else if (expression[sign] == ')') {
+                    leftBrackets--;
+                }
+
+                if (leftBrackets < 0) {
+                    correct = false;
+                }
+            }
+
+            if (leftBrackets > 0) {
+                correct = false;
+            }
+
+            jsConsole.writeLine("Brackets are correctly written: " + correct);
+        }
+
+	</script>
+</body>
+</html>

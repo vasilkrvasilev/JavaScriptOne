@@ -1,0 +1,42 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>NumberFrequency</title>
+	<link href="styles/js-console.css" rel="stylesheet" />
+</head>
+<body>
+    <label for="tb-array">Array</label>
+	<input id="tb-array" type="text" class="js-console-input" />
+    <br />
+    <label for="tb-number">Number</label>
+	<input id="tb-number" type="text" class="js-console-input" />
+	<a href="#" class="js-console-btn" onclick="onButtonClick()">Count number frequency</a>
+	<br />
+	<div id="js-console"></div>
+	<script src="scripts/js-console.js"></script>
+    <script>
+
+        function Count(array, elements, number) {
+            var frequency = 0;
+
+            for (var count = 0; count < elements; count++) {
+                if (number == array[count]) {
+                    frequency++;
+                }
+            }
+
+            return frequency;
+        }
+
+        function onButtonClick() {
+            var input = jsConsole.read("#tb-array");
+            var array = input.split(' ');
+            var elements = array.length;
+            var number = jsConsole.readInteger("#tb-number");
+
+            jsConsole.writeLine("Number " + number + " is repeated " + Count(array, elements, number) + " times");
+        }
+
+	</script>
+</body>
+</html>

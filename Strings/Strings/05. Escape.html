@@ -1,0 +1,31 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Escape</title>
+    <link href="styles/js-console.css" rel="stylesheet" />
+    <script src="scripts/string-extensions.js"></script>
+</head>
+<body>
+    <label for="tb-text">Text</label>
+	<input id="tb-text" type="text" class="js-console-input" />
+	<a href="#" class="js-console-btn" onclick="onButtonClick()">Replace</a>
+	<br />
+	<div id="js-console"></div>
+	<script src="scripts/js-console.js"></script>
+    <script>
+
+        function onButtonClick() {
+            var text = jsConsole.read("#tb-text");
+
+            String.prototype.htmlEscape = function () {
+                var escapedStr = String(this).replace(/ /g, '&nbsp;');
+                return escapedStr;
+            }
+
+            text = text.htmlEscape();
+            jsConsole.writeLine(text);
+        }
+
+	</script>
+</body>
+</html>

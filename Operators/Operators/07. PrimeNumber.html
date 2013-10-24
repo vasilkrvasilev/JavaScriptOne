@@ -1,0 +1,26 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>PrimeNumber</title>
+	<link href="styles/js-console.css" rel="stylesheet" />
+</head>
+<body>
+    <div id="js-console"></div>
+	<script src="scripts/js-console.js"></script>
+	<script>
+	    var number = parseInt(prompt("Enter number", 0));
+	    var divider = 2;
+	    var maxDivider = parseInt(Math.sqrt(number));
+	    var prime = true;
+	    while (prime && (divider <= maxDivider)) {
+	        if (number % divider == 0) {
+	            prime = false;
+	        }
+	        divider++;
+	    }
+
+	    jsConsole.writeLine("The number is prime is " + prime);
+
+	</script>
+</body>
+</html>

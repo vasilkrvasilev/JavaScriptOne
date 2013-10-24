@@ -1,0 +1,5 @@
+C:\Users\Vasko\Desktop\Projects JavaScript\PartOne\UsingObjects\UsingObjects\bin\UsingObjects.dll
+C:\Users\Vasko\Desktop\Projects JavaScript\PartOne\UsingObjects\UsingObjects\bin\UsingObjects.pdb
+C:\Users\Vasko\Desktop\Projects JavaScript\PartOne\UsingObjects\UsingObjects\obj\Debug\UsingObjects.csprojResolveAssemblyReference.cache
+C:\Users\Vasko\Desktop\Projects JavaScript\PartOne\UsingObjects\UsingObjects\obj\Debug\UsingObjects.dll
+C:\Users\Vasko\Desktop\Projects JavaScript\PartOne\UsingObjects\UsingObjects\obj\Debug\UsingObjects.pdb

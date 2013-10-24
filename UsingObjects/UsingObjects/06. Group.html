@@ -1,0 +1,86 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Group</title>
+	<link href="styles/js-console.css" rel="stylesheet" />
+</head>
+<body>
+    <label for="tb-first">First Names</label>
+	<input id="tb-first" type="text" class="js-console-input" />
+    <label for="tb-last">Last Names</label>
+	<input id="tb-last" type="text" class="js-console-input" />
+    <label for="tb-age">Ages</label>
+	<input id="tb-age" type="text" class="js-console-input" />
+    <br />
+    <label for="tb-property">Property</label>
+	<input id="tb-property" type="text" class="js-console-input" />
+	<a href="#" class="js-console-btn" onclick="onButtonClick()">Group</a>
+	<br />
+	<div id="js-console"></div>
+	<script src="scripts/js-console.js"></script>
+    <script>
+
+        function person(first, last, age) {
+            return {
+                first: first,
+                last: last,
+                age: age
+            };
+        }
+
+        function group(property, array) {
+            var frequency = {};
+            var value = {};
+            for (var count in array) {
+                element = array[count][property];
+                if (frequency[element]) {
+                    frequency[element]++;
+                }
+                else {
+                    frequency[element] = 1;
+                }
+            }
+
+            return frequency;
+        }
+
+        function onButtonClick() {
+            var firstInput = jsConsole.read("#tb-first");
+            var lastInput = jsConsole.read("#tb-last");
+            var ageInput = jsConsole.read("#tb-age");
+            var firstData = firstInput.split(' ');
+            var lastData = lastInput.split(' ');
+            var ageData = ageInput.split(' ');
+            var human = [];
+            var elements = firstData.length;
+
+            for (var count = 0; count < elements; count++) {
+                currentPerson = new person(firstData[count], lastData[count], parseInt(ageData[count]));
+                human[count] = currentPerson;
+            }
+
+            var firstNameFrequency = group("first", human);
+            for (var element in firstNameFrequency) {
+                jsConsole.writeLine(element + " -> " + firstNameFrequency[element]);
+            }
+
+            var lastNameFrequency = group("last", human);
+            for (var element in lastNameFrequency) {
+                jsConsole.writeLine(element + " -> " + lastNameFrequency[element]);
+            }
+
+            var ageFrequency = group("age", human);
+            for (var element in ageFrequency) {
+                jsConsole.writeLine(element + " -> " + ageFrequency[element]);
+            }
+
+            var property = jsConsole.read("#tb-property");
+            var costomFrequency = group(property, human);
+            for (var element in costomFrequency) {
+                jsConsole.writeLine(element + " -> " + costomFrequency[element]);
+            }
+        }
+
+	</script>
+</body>
+</html>
